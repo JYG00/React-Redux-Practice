@@ -1,34 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
-import AddNumber from "./components/AddNumber";
-import DisplayNumber from "./components/displayNumber";
-class AddNumberRoot extends Component {
+import AddNumberRoot from "./components/AddNumberRoot";
+import DisplayNumberRoot from "./components/displayNumberRoot";
+
+class App extends Component {
+  state = { number: 0 };
   render() {
     return (
-      <div>
-        <h1>Add Number Root</h1>
-        <AddNumber></AddNumber>
-      </div>
-    );
-  }
-}
-
-function App() {
-  return (
-    <div className="App">
-      <h1>Root</h1>
-      <AddNumberRoot></AddNumberRoot>
-      <DisplayNumberRoot />
-    </div>
-  );
-}
-
-class DisplayNumberRoot extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Display Number Root</h1>
-        <DisplayNumber />
+      <div className="App">
+        <h1>Root</h1>
+        <AddNumberRoot
+          onClick={function (size) {
+            this.setState({ number: this.state.number + size });
+          }.bind(this)}
+        ></AddNumberRoot>
+        <DisplayNumberRoot number={this.state.number} />
       </div>
     );
   }
